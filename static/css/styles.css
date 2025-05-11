@@ -1,0 +1,125 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;  
+}
+
+/* Ensuring the body stays fixed with background elements */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    overflow-y: scroll;  /* Keep vertical scrolling */
+    cursor: pointer;
+    position: relative;
+}
+
+/* Section-specific styles */
+section {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    z-index: 1;
+}
+
+/* Background (fixed for each section) */
+#spiderWebCanvas, #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* Horizontal glowing line that fades from both ends */
+#defense-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#defense-line div {
+    height: 1px; /* Line thickness */
+    background-color: #20ff9f; /* Solid green line */
+    box-shadow: 0 0 5px rgba(32, 255, 159, 0.5), 0 0 10px rgba(32, 255, 159, 0.4); /* Glowing effect */
+}
+
+/* Section Gap Between Each Section */
+section:not(:last-child) {
+    margin-bottom: 60px;  /* This gap will be the visible space between sections */
+}
+
+/* Ensuring that the content of the section stays above the background */
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Optional: Background Pattern on Specific Sections */
+#achievements::before, #cyber-insights::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('your-pattern-image-url') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.1;  /* Optional, for a subtle effect */
+    z-index: -1;
+}
+
+/* 3D Rotation Keyframes */
+@keyframes rotate3D {
+    0% {
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(720deg) rotateX(720deg);
+    }
+}
+
+/* Applying the rotation animation to the logo */
+.logo-rotate-3d {
+    animation: rotate3D 9s infinite linear;
+}
+
+@keyframes spin-forward {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* New class to rotate on hover using spin-forward keyframes */
+.group:hover .rotate-icon {
+    animation: spin-forward 1s forwards;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(32, 255, 159, 0.3);
+}
