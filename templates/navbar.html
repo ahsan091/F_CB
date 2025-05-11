@@ -1,0 +1,79 @@
+<nav class="fixed top-0 z-40 w-full border-b border-white/5 bg-[#000000]/95 backdrop-blur-xl">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <!-- Logo Section -->
+        <div class="flex w-[200px] items-center gap-2">
+            <button onclick="scrollToSection('top')" class="group flex items-center gap-3 transition-all duration-300 hover:scale-105">
+                <div class="relative">
+                    <i data-lucide="shield" class="h-8 w-8 text-gray-300 transition-all duration-300 group-hover:text-[#20ff9f]"></i>
+                    <div class="absolute -inset-2 -z-10 animate-pulse rounded-full bg-[#20ff9f]/10 blur-md transition-all duration-300 group-hover:bg-[#20ff9f]/20"></div>
+                </div>
+                <span class="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-xl font-bold tracking-wider text-transparent transition-all duration-300 group-hover:from-[#20ff9f] group-hover:to-[#20ff9f]">
+                    CYBERBURGS
+                </span>
+            </button>
+        </div>
+
+        <!-- Navigation Links (Desktop) -->
+        <div class="hidden flex-1 md:block ml-16">
+            <ul class="flex items-center justify-center gap-10">
+                {% for item in nav_items[1:] %}
+                <li class="relative nav-item">
+                    <button onclick="scrollToSection('{{ item.href }}')" class="group relative text-sm font-semibold tracking-wide text-gray-400 transition-all duration-300 hover:text-[#20ff9f]">
+                        <span class="relative z-10 transition-all duration-300 group-hover:font-extrabold">
+                            {{ item.label }}
+                        </span>
+                        <!-- Hover Effects (underline and glow) -->
+                        <span class="absolute -inset-2 -z-10 scale-0 rounded-lg bg-[#20ff9f]/5 blur-md transition-all duration-300 group-hover:scale-100"></span>
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-[#20ff9f] via-[#20ff9f] to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-[#20ff9f] via-[#20ff9f] to-emerald-500 opacity-40 blur-sm transition-all duration-300 group-hover:w-full"></span>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Login Button (static, for demo purposes) -->
+        <div class="flex w-[200px] justify-end">
+            <button type="button" class="relative overflow-hidden border-2 border-[#20ff9f]/20 bg-black/60 text-base font-bold tracking-wide text-gray-300 transition-all duration-300 hover:scale-105 hover:border-[#20ff9f]/50 hover:text-[#20ff9f] hover:shadow-[0_0_2rem_-0.5rem_#20ff9f] h-10 px-4 py-2 rounded-md">
+                <span class="relative z-10">LOGIN</span>
+                <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#20ff9f]/0 via-[#20ff9f]/20 to-[#20ff9f]/0 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100"></div>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Button (visible on small screens) -->
+        <button id="mobile-menu-button" class="group relative rounded-full border border-[#20ff9f]/20 bg-black/40 p-3 text-gray-300 transition-all duration-300 hover:scale-105 hover:border-[#20ff9f]/30 hover:text-[#20ff9f] md:hidden">
+            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#20ff9f]/0 via-[#20ff9f]/10 to-[#20ff9f]/0 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100"></div>
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu Overlay (Hidden by default) -->
+        <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
+            <!-- Backdrop -->
+            <div id="mobile-menu-backdrop" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"></div>
+            <!-- Slide-in Menu Panel -->
+            <div id="mobile-menu-content" class="fixed right-0 top-0 z-50 h-full w-[280px] bg-black/95 p-6 shadow-xl transform translate-x-full transition-transform duration-300">
+                <!-- Close Button -->
+                <button id="mobile-menu-close" class="absolute right-4 top-4 rounded-full border border-white/10 p-2 text-gray-400 transition-colors hover:border-[#20ff9f]/20 hover:text-[#20ff9f]">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+                <!-- Mobile Nav Links -->
+                <nav class="mt-16">
+                    <ul class="space-y-4">
+                        {% for item in nav_items %}
+                        <li class="mobile-nav-item">
+                            <button onclick="scrollToSection('{{ item.href }}'); closeMobileMenu();" class="group flex w-full items-center space-x-2 rounded-lg px-4 py-2 text-left text-sm font-semibold tracking-wide text-gray-400 transition-all duration-300 hover:text-[#20ff9f]">
+                                <span class="relative">
+                                    {{ item.label }}
+                                    <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-[#20ff9f] via-[#20ff9f] to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </button>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>

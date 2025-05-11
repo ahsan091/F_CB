@@ -1,0 +1,39 @@
+<section id="security-matrix" class="relative min-h-screen w-full bg-black pt-32 pb-24">
+    <!-- Section Header -->
+    <div class="relative z-10 mx-auto max-w-7xl px-4">
+        <div class="text-center mb-8 security-header opacity-0 translate-y-5">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-[0.2em]">SECURITY MATRIX</h2>
+            <p class="text-gray-400 max-w-3xl mx-auto text-base sm:text-lg">
+                Comprehensive cybersecurity solutions to protect your digital assets and strengthen your security posture.
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {% for service in services %}
+            <div class="group relative rounded-lg border border-white/5 bg-black/20 p-6 backdrop-blur-sm service-item opacity-0 translate-y-5" data-index="{{ loop.index0 }}">
+                <div class="relative z-10 space-y-4">
+                    <!-- Icon in circle with rotation -->
+                    <div class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#20ff9f]/10">
+                        <i data-lucide="{{ service.icon|lower|replace(' ', '-') }}"
+                           class="rotate-icon h-6 w-6 text-[#20ff9f]"></i>
+                    </div>                    
+                    <h3 class="text-lg font-semibold text-[#20ff9f]">{{ service.title }}</h3>
+                    <p class="text-sm text-gray-400">{{ service.description }}</p>
+                    <ul class="space-y-2">
+                        {% for feature in service.features %}
+                        <li class="text-sm text-gray-500">• {{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Hover accent backgrounds -->
+                <div class="absolute inset-0 -z-10 rounded-lg bg-gradient-to-b from-[#20ff9f]/0 to-[#20ff9f]/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                <div class="absolute inset-0 -z-10 rounded-lg bg-[#20ff9f]/5 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Decorative gradient overlay (top fade) -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+</section>

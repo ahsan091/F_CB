@@ -1,0 +1,87 @@
+<section id="cyber-insights" class="relative min-h-screen w-full bg-black pt-32 pb-24">
+    <!-- Background pattern (circuit-like) -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgMjBMNDAgMjBNMjAgMjBMMjAgNDBNMjAgMjBMMzAgMzAiIHN0cm9rZT0iIzIwZmY5ZiIgc3Ryb2tlLXdpZHRoPSIwLjUiIGZpbGw9Im5vbmUiLz48L3N2Zz4=')] opacity-20"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-7xl">
+        <!-- Section Header -->
+        <div class="text-center mb-8 px-4 insights-header opacity-0 translate-y-5">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-[0.2em]">CYBER INSIGHTS</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mt-6">
+                Stay informed with the latest cybersecurity trends, threats, and defense strategies through our expert insights and analysis.
+            </p>
+        </div>
+
+        <!-- Posts List -->
+        <div class="space-y-8 px-4">
+            {% for post in posts %}
+            <article class="group relative overflow-hidden rounded-xl bg-gradient-to-r from-black/60 via-black/40 to-black/60 backdrop-blur-sm post-item transition-all duration-500 ease-in-out opacity-0 translate-x-[-20px] {% if loop.index > 3 %}hidden{% endif %}" data-index="{{ loop.index0 }}">
+                <!-- Border glow on hover -->
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#20ff9f]/0 via-[#20ff9f]/10 to-[#20ff9f]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div class="relative flex flex-col md:flex-row gap-6 p-4 sm:p-6">
+                    <!-- Image Thumbnail -->
+                    <div class="relative w-full md:w-72 h-48 md:h-auto overflow-hidden rounded-lg">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#20ff9f]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                        <img src="{{ url_for('static', filename='img/' + post.image) }}" alt="{{ post.title }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <!-- Corner accents on hover -->
+                        <div class="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#20ff9f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#20ff9f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1 flex flex-col min-w-0">
+                        <div class="flex items-center gap-4 mb-4">
+                            <!-- Category label -->
+                            <span class="inline-flex items-center rounded-full px-3 py-1 text-sm text-[#20ff9f] bg-[#20ff9f]/5 border border-[#20ff9f]/20 shadow-[0_0_10px_rgba(32,255,159,0.1)]">
+                                {{ post.category }}
+                            </span>
+                        </div>
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white to-white group-hover:from-[#20ff9f] group-hover:to-white transition-all duration-300">
+                            {{ post.title }}
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">{{ post.description }}</p>
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            {% for tag in post.tags %}
+                            <span class="text-xs text-[#20ff9f]/80 bg-[#20ff9f]/5 px-2 py-1 rounded-md border border-[#20ff9f]/10 transition-colors duration-300 hover:bg-[#20ff9f]/10">
+                                {{ tag }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                        <!-- Meta info (read time and views) + "Read More" -->
+                        <div class="flex items-center gap-4 text-sm text-gray-400 mt-auto">
+                            <span class="flex items-center gap-1">
+                                <i data-lucide="clock" class="h-4 w-4 text-[#20ff9f]"></i>
+                                {{ post.read_time }}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i data-lucide="eye" class="h-4 w-4 text-[#20ff9f]"></i>
+                                {{ post.views }}
+                            </span>
+                            <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer" class="ml-auto flex items-center gap-2 text-[#20ff9f] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="text-sm">Read More</span>
+                                <i data-lucide="arrow-right" class="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                            </a>                            
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <!-- View All Insights Button (Down Arrow Only) -->
+        <div class="mt-16 flex justify-center view-all-insights opacity-0 translate-y-5">
+            <button id="load-more-posts" class="group relative flex items-center justify-center rounded-full bg-gradient-to-r from-black/60 via-black/40 to-black/60 w-12 h-12 transition-all duration-300 border border-[#20ff9f]/20 hover:border-[#20ff9f] hover:bg-[#20ff9f]/10">
+                <svg class="h-5 w-5 text-[#20ff9f] group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Gradient overlay at bottom -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
+</section>

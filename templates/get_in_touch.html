@@ -1,0 +1,152 @@
+<section id="get-in-touch" class="relative min-h-screen w-full bg-black pt-32 pb-8">
+    <!-- Existing background pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0 bg-[radial-gradient(#20ff9f_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    </div>
+    <!-- New background pattern (with opacity-0) -->
+    <div class="absolute inset-0 opacity-0">
+        <div class="absolute inset-0 bg-[radial-gradient(#20ff9f_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-8 contact-header opacity-0 translate-y-5">
+            <h2 class="text-5xl font-bold text-[#20ff9f] mb-4 tracking-[0.2em]">GET IN TOUCH</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                Have questions about our cybersecurity solutions? We're here to help protect your digital assets.
+            </p>
+        </div>
+
+        <!-- Two-column grid: Contact Form & Contact Info -->
+        <div class="grid gap-8 lg:grid-cols-2 mb-16">
+            <!-- Contact Form -->
+            <div class="relative overflow-hidden rounded-xl border border-white/5 bg-black p-6 contact-form opacity-0 translate-x-[-20px]">
+                <form action="{{ url_for('contact') }}" method="post" class="space-y-6">
+                    <!-- Name fields -->
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="space-y-2">
+                            <label for="firstName" class="text-white">First Name</label>
+                            <input id="firstName" name="firstName" placeholder="Abdur" class="w-full h-10 rounded-md border border-white/10 bg-white/5 text-white placeholder:text-gray-400 px-3 py-2" />
+                        </div>
+                        <div class="space-y-2">
+                            <label for="lastName" class="text-white">Last Name</label>
+                            <input id="lastName" name="lastName" placeholder="Rehman" class="w-full h-10 rounded-md border border-white/10 bg-white/5 text-white placeholder:text-gray-400 px-3 py-2" />
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="space-y-2">
+                        <label for="email" class="text-white">Email</label>
+                        <input id="email" name="email" type="email" placeholder="abdur_rehman@example.com" class="w-full h-10 rounded-md border border-white/10 bg-white/5 text-white placeholder:text-gray-400 px-3 py-2" />
+                    </div>
+                    <!-- Message textarea -->
+                    <div class="space-y-2">
+                        <label for="message" class="text-white">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message..." class="min-h-[210px] w-full rounded-md border border-white/10 bg-white/5 text-white placeholder:text-gray-400 px-3 py-2"></textarea>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full group relative overflow-hidden bg-gradient-to-r from-[#20ff9f]/10 to-emerald-500/10 hover:from-[#20ff9f]/20 hover:to-emerald-500/20 border-[#20ff9f]/30 border-2 rounded-md text-gray-300 hover:text-[#20ff9f] hover:shadow-[0_0_2rem_-0.5rem_#20ff9f] transition-all duration-300 h-10 px-4 py-2">
+                        <span class="relative z-10 flex items-center gap-2 justify-center">
+                            Send Message
+                            <i data-lucide="send" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </span>
+                    </button>
+                </form>
+                <!-- Decorative background blobs for form -->
+                <div class="absolute -left-1/4 -top-1/4 h-48 w-48 rounded-full bg-[#20ff9f]/10 blur-3xl"></div>
+                <div class="absolute -bottom-1/4 -right-1/4 h-48 w-48 rounded-full bg-[#20ff9f]/10 blur-3xl"></div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="space-y-8 contact-info opacity-0 translate-x-[20px]">
+                <!-- Contact Methods (Email, Phone, etc.) -->
+                <div class="grid gap-4 sm:grid-cols-2">
+                    {% for method in contact_methods %}
+                    <div class="group relative overflow-hidden rounded-lg border border-white/5 bg-black p-4 transition-colors hover:border-[#20ff9f]/20">
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="{{ method.icon|lower|replace(' ', '-') }}" class="h-6 w-6 text-[#20ff9f]"></i>
+                            <div>
+                                <h3 class="font-medium text-white">{{ method.title }}</h3>
+                                {% if method.link %}
+                                <a href="{{ method.link }}" class="text-sm text-gray-400 hover:text-[#20ff9f] transition-colors">
+                                    {{ method.value }}
+                                </a>
+                                {% else %}
+                                <p class="text-sm text-gray-400">{{ method.value }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- Hover highlight -->
+                        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#20ff9f]/0 via-[#20ff9f]/5 to-[#20ff9f]/0 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Location Map Placeholder -->
+                <div class="relative aspect-video overflow-hidden rounded-lg border border-white/5 bg-black">
+                    {# <img src="{{ url_for('static', filename='images/cybertown.png') }}" alt="Imarat Cyber Tower" class="h-full w-full object-cover"> #}
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 class="text-lg font-medium text-white mb-2">Cyberburgs Headquarters</h3>
+                        <p class="text-sm text-gray-300">
+                            Located at IMARAT CYBER TOWER, IMARAT DOWNTOWN, MAIN EXPRESSWAY, ISLAMABAD, our office is easily accessible and equipped with state-of-the-art security facilities.
+                        </p>
+                    </div>
+                    <!-- Overlay glow -->
+                    <div class="absolute inset-0 bg-[#20ff9f]/5 mix-blend-overlay"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#20ff9f]/0 via-[#20ff9f]/5 to-[#20ff9f]/0 opacity-30"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Separator (dot in center with line) -->
+        <div class="relative py-16">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-white/5"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-black">
+                    <div class="h-2 w-2 rounded-full bg-[#20ff9f]"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="text-center social-links opacity-0 translate-y-5">
+            <h3 class="text-3xl font-bold text-white mb-12 tracking-[0.2em]">Connect With Us</h3>
+            <div class="flex justify-center items-center gap-6 mx-auto w-fit social-icons">
+                {% for social in social_links %}
+                <a href="{{ social.href }}" class="group relative" aria-label="{{ social.label }}" data-index="{{ loop.index0 }}">
+                    <!-- Outer Glow -->
+                    <div class="absolute inset-0 rounded-full bg-[#20ff9f]/20 blur-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                    <!-- Icon Circle -->
+                    <div class="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-black transition-all duration-300 group-hover:border-[#20ff9f]/50 group-hover:bg-[#20ff9f]/10">
+                        {% if social.icon|lower == 'discord' %}
+                        <i class="fab fa-discord h-5 w-5 text-gray-400 transition-all duration-300 group-hover:text-[#20ff9f] group-hover:scale-110"></i>
+                        {% else %}
+                        <i data-lucide="{{ social.icon|lower }}" class="h-5 w-5 text-gray-400 transition-all duration-300 group-hover:text-[#20ff9f] group-hover:scale-110"></i>
+                        {% endif %}
+                    </div>
+                    <!-- Animated Ring -->
+                    <div class="absolute inset-0 rounded-full border border-[#20ff9f]/0 transition-all duration-300 group-hover:border-[#20ff9f]/20 group-hover:scale-110"></div>
+                </a>
+                {% endfor %}
+            </div>
+            <!-- Copyright -->
+            <div class="relative pt-8 copyright opacity-0">
+                <!-- Glowing lines -->
+                <div class="absolute left-1/2 top-0 h-px w-32 -translate-x-1/2">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#20ff9f]/50 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#20ff9f]/20 to-transparent blur"></div>
+                </div>
+                <!-- Copyright Text -->
+                <div class="group space-y-2">
+                    <div class="relative inline-flex items-center gap-2">
+                        <span class="text-[#20ff9f]">@cyberburgs</span>
+                        <span class="font-mono text-white/80">2025</span>
+                    </div>
+                    <p class="text-sm text-gray-400">All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

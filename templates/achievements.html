@@ -1,0 +1,64 @@
+<section id="achievements" class="relative min-h-[40vh] w-full bg-black pt-20 pb-24 scroll-mt-20">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0 bg-[radial-gradient(#20ff9f_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-7xl">
+        <!-- Section Header -->
+        <div class="text-center mb-8 px-4 achievements-header opacity-0 translate-y-5">
+            <h2 class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#20ff9f] to-emerald-500 mb-4 tracking-[0.2em]">FEATURED PROJECTS</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+                Explore our portfolio of successful cybersecurity implementations and solutions that have helped organizations strengthen their security posture.
+            </p>
+        </div>
+
+        <!-- Coming Soon Section -->
+        <div class="flex flex-col items-center justify-center h-[30vh] text-center text-white opacity-0 translate-y-5 coming-soon">
+            <h3 class="text-4xl sm:text-4xl font-bold text-[#20ff9f] mb-6">Coming Soon!</h3>
+            <p class="text-gray-400 max-w-md mx-auto text-base sm:text-lg">
+                Our featured projects are currently being prepared for showcase. Please check back later for updates on our latest cybersecurity implementations.
+            </p>
+        </div>
+
+        <!-- Commented out Projects Grid (for reference) -->
+        <!--
+        <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4" id="project-grid">
+            {% for project in projects %}
+            <div class="group relative w-full max-w-sm overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm project-item transition-all duration-500 ease-in-out opacity-0 translate-y-5 {% if loop.index > 3 %}hidden{% endif %}" data-index="{{ loop.index0 }}">
+                <div class="relative h-48 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-10"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#20ff9f]/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="relative z-20 p-6">
+                    <h3 class="text-xl font-bold mb-3 text-[#20ff9f] line-clamp-1">{{ project.title }}</h3>
+                    <p class="text-gray-300 mb-4 text-sm line-clamp-2 h-10">{{ project.description }}</p>
+                    <div class="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
+                        {% for tech in project.technologies %}
+                        <div class="relative">
+                            <span class="inline-block rounded-full border border-[#20ff9f]/20 bg-[#20ff9f]/5 px-2 py-0.5 text-xs text-[#20ff9f]">
+                                {{ tech }}
+                            </span>
+                            <div class="absolute inset-0 -z-10 animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-[#20ff9f]/10 to-transparent opacity-0 group-hover:opacity-100"></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="w-full h-9 group/button relative overflow-hidden bg-gradient-to-r from-[#20ff9f]/10 to-emerald-500/10 hover:from-[#20ff9f]/20 hover:to-emerald-500/20 border-[#20ff9f]/30 border-2 rounded-md text-gray-300 hover:text-[#20ff9f] hover:shadow-[0_0_2rem_-0.5rem_#20ff9f] transition-all duration-300">
+                        <span class="relative z-10 text-sm font-bold">Live Demo</span>
+                        <i data-lucide="external-link" class="h-4 w-4 ml-2 inline-block transition-transform group-hover/button:translate-x-1"></i>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-16 flex justify-center view-all-projects opacity-0 translate-y-5">
+            <button id="load-more-projects" class="group flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-black/60 via-black/40 to-black/60 transition-all duration-300 border border-[#20ff9f]/20 hover:border-[#20ff9f] hover:bg-[#20ff9f]/10">
+                <svg class="h-5 w-5 text-[#20ff9f] group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+        </div>
+        -->
+    </div>
+</section>
